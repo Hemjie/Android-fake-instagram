@@ -1,6 +1,7 @@
 package com.formation.instagram
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -22,9 +23,13 @@ class UserActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
+    lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
+
+        bottomNavigationViewAction()
 
         sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE)
 
@@ -55,7 +60,6 @@ class UserActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
             }
-
         })
     }
 
@@ -67,6 +71,23 @@ class UserActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putString("nickname", nickname)
         editor.apply()
+    }
 
+    private fun bottomNavigationViewAction(){
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.action_home -> {
+                    val intent = Intent(this, PostListActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.action_user -> {
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
