@@ -35,7 +35,8 @@ class UserActivity : AppCompatActivity() {
         userIntro = findViewById(R.id.user_intro)
         userEditText = findViewById(R.id.user_edit_nickname)
 
-        userIntro.text = getString(R.string.user_intro, "")
+        userIntro.text = getString(R.string.user_intro, getNicknameSharedPreference())
+        userEditText.hint = getNicknameSharedPreference()
 
         userEditText.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
