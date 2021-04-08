@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UserActivity">
+
+        <TextView
+            android:id="@+id/user_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/user_edit_nickname"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/user_intro"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="23dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+
+        <EditText
+            android:id="@+id/user_edit_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_intro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="@string/user_edit_nickname"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/bottom_app_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottom_navigation_bar"
+        android:src="@drawable/ic_round_post_add_24"
+        app:maxImageSize="35dp"
+        android:contentDescription="Post Add"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

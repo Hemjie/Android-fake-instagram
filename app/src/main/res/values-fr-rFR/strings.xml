@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Instagram Fake</string>
+    <string name="bot_app_bar_home">Accueil</string>
+    <string name="bot_app_bar_user">Utilisateur</string>
+    <string name="user_intro">Choisis ton pseudo : %1$s</string>
+    <string name="user_edit_nickname">pseudo</string>
+</resources>

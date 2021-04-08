@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Instagram Fake</string>
+    <string name="bot_app_bar_home">Home</string>
+    <string name="bot_app_bar_user">User</string>
+
+    <plurals name="like">
+        <item quantity="one">%d like</item>
+        <item quantity="many">%d likes</item>
+    </plurals>
+    <string name="user_intro">Choose your nickname : %1$s</string>
+    <string name="user_edit_nickname">nickname</string>
+</resources>
