@@ -81,6 +81,7 @@ class UserActivity : AppCompatActivity() {
                 R.id.action_home -> {
                     val intent = Intent(this, PostListActivity::class.java)
                     startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.action_user -> {
