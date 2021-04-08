@@ -79,12 +79,9 @@ class UserActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.action_home -> {
-                    val intent = Intent(this, PostListActivity::class.java)
-                    startActivity(intent)
+//                    val intent = Intent(this, PostListActivity::class.java)
+//                    startActivity(intent)
                     finish()
-                    true
-                }
-                R.id.action_user -> {
                     true
                 }
                 else -> false
