@@ -25,6 +25,11 @@ class PostListActivity : AppCompatActivity(), View.OnClickListener {
 
         bottomNavigationViewAction()
 
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+            .menu
+            .findItem(R.id.action_home)
+            .isChecked = true
+
         fillPostList()
 
         adapter = PostAdapter(posts)
