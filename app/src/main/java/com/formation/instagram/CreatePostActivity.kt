@@ -25,12 +25,15 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
     private fun bottomNavigationViewAction(){
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
         bottomNavigationView
-            .menu.findItem(R.id.action_home)
+            .menu.findItem(R.id.action_void)
             .isChecked = true
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.action_home -> {
+
+                    val intent = Intent(this, PostListActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.action_user -> {
