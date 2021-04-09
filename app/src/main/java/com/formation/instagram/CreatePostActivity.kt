@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -41,11 +43,31 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
         photoBlur = findViewById(R.id.photo_blur)
         photo = findViewById(R.id.photo)
 
+        nickname.text = sp.getString("nickname", "")
+        getDescriptionForTextLength()
+
 
 
     }
 
     override fun onClick(v: View?) {
+    }
+
+    private fun getDescriptionForTextLength(){
+        descriptionCount.text = getString(R.string.description_text_length, 0)
+
+        description.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                descriptionCount.text = getString(R.string.description_text_length, s?.length)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
     }
 
     private fun bottomNavigationViewAction(){
