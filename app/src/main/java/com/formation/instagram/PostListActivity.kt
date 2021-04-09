@@ -25,11 +25,6 @@ class PostListActivity : AppCompatActivity(), View.OnClickListener {
 
         bottomNavigationViewAction()
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-            .menu
-            .findItem(R.id.action_home)
-            .isChecked = true
-
         fillPostList()
 
         adapter = PostAdapter(posts)
@@ -43,6 +38,9 @@ class PostListActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun bottomNavigationViewAction(){
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
+        bottomNavigationView
+            .menu.findItem(R.id.action_home)
+            .isChecked = true
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
