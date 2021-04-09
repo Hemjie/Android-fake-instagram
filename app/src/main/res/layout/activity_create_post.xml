@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="90dp"
         >
 
         <TextView
@@ -35,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@id/nickname"
             app:layout_constraintBottom_toTopOf="@id/description_count"
             android:maxLength="280"
-
+            android:layout_marginTop="8dp"
             />
 
         <TextView
