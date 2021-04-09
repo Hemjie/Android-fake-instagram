@@ -36,6 +36,8 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var photoBlur: ImageView
     lateinit var photo: ImageView
 
+    lateinit var bitmap: Bitmap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
@@ -74,7 +76,7 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
         if (
             nickname.text.isNotEmpty() &&
             description.text.length > 2 &&
-            photo.isDirty){
+            bitmap != null){
                 Log.i("validationPost",
                     "Tout est ok. Je vais pouvoir valider dans ma bdd")
             return
@@ -90,7 +92,7 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
 
             val photoURI = data?.data
 
-            var bitmap: Bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 ImageDecoder.decodeBitmap(ImageDecoder.createSource(this.contentResolver, photoURI!!))
             } else {
                 MediaStore.Images.Media.getBitmap(this.contentResolver, photoURI)
