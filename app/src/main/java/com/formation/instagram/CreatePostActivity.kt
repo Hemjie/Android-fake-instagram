@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -46,11 +47,16 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
         nickname.text = sp.getString("nickname", "")
         getDescriptionForTextLength()
 
-
-
+        btnOpenGallery.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_open_gallery -> {
+                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                startActivity(gallery)
+            }
+        }
     }
 
     private fun getDescriptionForTextLength(){
