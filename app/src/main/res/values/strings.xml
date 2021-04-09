@@ -9,4 +9,6 @@
     </plurals>
     <string name="user_intro">Choose your nickname : %1$s</string>
     <string name="user_edit_nickname">nickname</string>
+    <string name="description_text_length">%1$d / 280</string>
+    <string name="btn_open_gallery">Open Gallery</string>
 </resources>
