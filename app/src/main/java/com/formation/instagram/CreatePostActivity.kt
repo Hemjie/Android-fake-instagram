@@ -19,6 +19,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.formation.instagram.utils.GlideBlurTransformation
+import com.formation.instagram.utils.PhotoUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -76,14 +77,17 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
 
             val photoURI = data?.data
 
-            val bitmap: Bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            var bitmap: Bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 ImageDecoder.decodeBitmap(ImageDecoder.createSource(this.contentResolver, photoURI!!))
             } else {
                 MediaStore.Images.Media.getBitmap(this.contentResolver, photoURI)
             }
 
-            photo.setImageBitmap(bitmap)
+            bitmap = PhotoUtils().resize(bitmap, 1200, 1200)
 
+            println("height: ${bitmap.height}, width: ${bitmap.width}, size: ${bitmap.byteCount}")
+
+            photo.setImageBitmap(bitmap)
             val context = photo.context
 
             Glide.with(context)
