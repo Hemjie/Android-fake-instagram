@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -17,6 +18,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
+
+    companion object {
+        const val PICK_IMAGE = 1
+    }
 
     lateinit var sp: SharedPreferences
     lateinit var bottomNavigationView: BottomNavigationView
@@ -54,8 +59,15 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
         when(v.id){
             R.id.btn_open_gallery -> {
                 val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-                startActivity(gallery)
+                startActivityForResult(gallery, PICK_IMAGE)
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            Log.i("CreatePostActivity", "${data?.data}")
         }
     }
 
