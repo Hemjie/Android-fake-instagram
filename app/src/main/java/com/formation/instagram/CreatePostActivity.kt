@@ -76,7 +76,7 @@ class CreatePostActivity : AppCompatActivity(), View.OnClickListener {
         if (
             nickname.text.isNotEmpty() &&
             description.text.length > 2 &&
-            bitmap != null){
+            photo.drawable != null){
                 Log.i("validationPost",
                     "Tout est ok. Je vais pouvoir valider dans ma bdd")
             return
